@@ -18,12 +18,13 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>jjwt</artifactId>
+			<groupId>io.jsonwebtoken</groupId>
+			<version>0.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -46,6 +47,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<artifactId>spring-session-core</artifactId>
+			<groupId>org.springframework.session</groupId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
@@ -65,6 +70,23 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>git-build-hook-maven-plugin</artifactId>
+				<configuration>
+					<installHooks>
+						<pre-push>./etc/hooks/pre-push.sh</pre-push>
+					</installHooks>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>install</goal>
+						</goals>
+					</execution>
+				</executions>
+				<groupId>com.rudikershaw.gitbuildhook</groupId>
+				<version>3.0.0</version>
 			</plugin>
 		</plugins>
 	</build>
